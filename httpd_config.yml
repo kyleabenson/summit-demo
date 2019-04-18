@@ -15,7 +15,7 @@
    - name: Add basic body to index file
      lineinfile:
        path: /var/www/html/index.html
-       regex: "<body>Hello World!</body>"
+       regexp: "<body>Hello World!</body>"
        state: present
        owner: apache
        group: apache
