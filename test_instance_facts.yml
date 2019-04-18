@@ -1,0 +1,28 @@
+---
+# Example Playbook
+- name: Compute Engine Instance Examples
+  hosts: localhost
+  gather_facts: no
+  vars:
+    service_account_email: "kbenson@redhat.com"
+    gcp_cred_file: "kbenson-rh-summit-19-7dc89bed13a7.json"
+    gcp_project: "kbenson-rh-summit-19"
+    gcp_cred_kind: "serviceaccount"
+  tasks:
+
+  - name:  an instance facts
+    gcp_compute_instance_facts:
+      zone: us-central1-a
+      filters:
+      - name = test-13
+      project: "{{ gcp_project}}"
+      auth_kind: "{{ gcp_cred_kind }}"
+      service_account_file: "{{ gcp_cred_file }}"
+      scopes: https://www.googleapis.com/auth/compute
+    register: results
+
+  - set_fact:
+      network_conf: "{{(results['items'] | list|first).networkInterfaces }}"
+  
+  - debug:
+      var: network_conf.accessConfigs[0]
