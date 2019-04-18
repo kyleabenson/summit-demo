@@ -20,6 +20,7 @@
        owner: apache
        group: apache
        mode: 0644 
+       state: present
    - name: Start httpd service
      service:
        name: httpd
