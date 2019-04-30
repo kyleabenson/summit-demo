@@ -30,7 +30,8 @@
         service_account_file: "{{ lookup('env','GCE_CREDENTIALS_FILE_PATH') }}"
         state: present
         tags: 
-          - http-server
+          items: 
+            - http-server
       register: output
     
     - debug:
