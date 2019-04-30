@@ -1,0 +1,20 @@
+---
+- name: Deploy a basic httpd vm
+  become: yes
+  hosts: tag_http-server
+  tasks: 
+   - name: Install httpd
+     yum:
+       name: httpd
+       state: present
+   - name: Move website collateral to httpd path
+     copy:
+       src: ../site/public/
+       dest: /var/www/html/
+       owner: apache
+       group: apache
+   - name: Start httpd service
+     service:
+       name: httpd
+       state: restarted
+       enabled: yes
