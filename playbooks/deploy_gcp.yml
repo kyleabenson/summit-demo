@@ -29,6 +29,7 @@
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ lookup('env','GCE_CREDENTIALS_FILE_PATH') }}"
         state: present
+        tags: http-server
       register: output
     
     - debug:
