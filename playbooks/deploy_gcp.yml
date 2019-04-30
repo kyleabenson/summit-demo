@@ -16,7 +16,7 @@
         - auto_delete: true
           boot: true
           initialize_params:
-            disk_size_gb: {{ disk_var | default(10)}}
+            disk_size_gb: "{{ disk_var | default(10)}}"
             source_image: projects/gce-uefi-images/global/images/centos-7-v20190326
         network_interfaces:
         - access_configs:
