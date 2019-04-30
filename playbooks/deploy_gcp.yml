@@ -2,10 +2,10 @@
 - name: Compute Engine Instance Examples
   hosts: localhost
   vars:
-    service_account_email: "kbenson@redhat.com"
-    gcp_cred_file: "kbenson-rh-summit-19-7dc89bed13a7.json"
-    gcp_project: "kbenson-rh-summit-19"
-    gcp_cred_kind: "serviceaccount"
+    # service_account_email: "kbenson@redhat.com"
+    # gcp_cred_file: "kbenson-rh-summit-19-7dc89bed13a7.json"
+    # gcp_project: "kbenson-rh-summit-19"
+    # gcp_cred_kind: "serviceaccount"
   tasks:
 
     - name: Create an instance
@@ -23,11 +23,10 @@
           - name: External NAT
             type: ONE_TO_ONE_NAT
         metadata:
-
         zone: us-central1-a
-        project: "{{ gcp_project }}"
-        auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ gcp_cred_file }}"
+        # project: "{{ gcp_project }}"
+        # auth_kind: "{{ gcp_cred_kind }}"
+        # service_account_file: "{{ gcp_cred_file }}"
         state: present
       register: output
     
