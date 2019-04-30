@@ -22,7 +22,8 @@
         - access_configs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
-        metadata:
+        metadata: 
+          istest: true
         zone: us-central1-a
         project: "{{ lookup('env','GCE_PROJECT') }}"
         auth_kind: "{{ gcp_cred_kind }}"
