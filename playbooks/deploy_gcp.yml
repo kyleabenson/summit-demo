@@ -37,7 +37,7 @@
         state: present
         tags: 
           items: 
-            - {{ item }}
+            "{{ item }}"
           with_items: "{{ gce_tags }}"
       register: output
     
