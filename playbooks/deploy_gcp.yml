@@ -2,10 +2,16 @@
 - name: Compute Engine Instance Examples
   hosts: localhost
   vars:
-    # service_account_email: "{{ GCE_EMAIL }}"
-    # gcp_cred_file: "kbenson-rh-summit-19-7dc89bed13a7.json"
     gcp_project: "kbenson-rh-summit-19"
     gcp_cred_kind: "serviceaccount"
+    gce_images_path: "projects/gce-uefi-images/global/images/"
+    gce_distro: "centos-7-v20190326"
+    gce_zone: "us-central1-a"
+    gce_tags: 
+      - http-server
+    # Ansible Tower stores the GCE credentials in env variables
+    gce_project: "{{ lookup('env','GCE_PROJECT') }}"
+    gce_account_file: "{{ lookup('env','GCE_CREDENTIALS_FILE_PATH') }}"
   tasks:
 
     - name: Create an instance
@@ -17,21 +23,22 @@
           boot: true
           initialize_params:
             disk_size_gb: "{{ disk_var | default(10)}}"
-            source_image: projects/gce-uefi-images/global/images/centos-7-v20190326
+            source_image: "{{gce_images_path}}{{gce_distro}}"
         network_interfaces:
         - access_configs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
         metadata: 
           istest: true
-        zone: us-central1-a
-        project: "{{ lookup('env','GCE_PROJECT') }}"
+        zone: "{{ gce_zone }}"
+        project: "{{gce_project}}"
         auth_kind: "{{ gcp_cred_kind }}"
-        service_account_file: "{{ lookup('env','GCE_CREDENTIALS_FILE_PATH') }}"
+        service_account_file: "{{ gce_account_file }}"
         state: present
         tags: 
           items: 
-            - http-server
+            - {{ item }}
+          with_items: "{{ gce_tags }}"
       register: output
     
     - debug:

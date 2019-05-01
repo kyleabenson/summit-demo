@@ -15,7 +15,7 @@ categories = [
 +++
 ![image alt text](/logo.png)
 ![image alt text](/giphy.gif)
-
+![image alt text](/construction.gif)
 
 <!-- ## Step 1. Install Hugo
 
