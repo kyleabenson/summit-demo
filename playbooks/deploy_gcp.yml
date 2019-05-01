@@ -38,7 +38,7 @@
         tags: 
           items: 
             "{{ item }}"
-          with_items: "{{ gce_tags }}"
+        with_items: "{{ gce_tags }}"
       register: output
     
     - debug:
