@@ -10,8 +10,8 @@
 
     - name: Create an instance
       gcp_compute_instance:
-        name: "test-{{ 60 | random }}"
-        machine_type: g1-small
+        name: "{{username}}-{{ 60 | random }}"
+        machine_type: "{{ instance_type }}"
         disks:
         - auto_delete: true
           boot: true
