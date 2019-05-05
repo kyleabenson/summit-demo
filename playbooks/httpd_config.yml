@@ -9,7 +9,7 @@
        state: present
    - name: Move website collateral to httpd path
      copy:
-       src: ../site/public/
+       src: files/public/
        dest: /var/www/html/
        owner: apache
        group: apache
