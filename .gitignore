@@ -1,6 +1,7 @@
 *.json
 site/public
 myfunction/tower-cli-master
-site/themes
+site/*
 .gitmodules
-.git/modules/*
+.git/modules/*      
+playbooks/files/public_backup/*
