@@ -3,3 +3,4 @@ site/public
 myfunction/tower-cli-master
 site/themes
 .gitmodules
+.git/modules/*
