@@ -30,6 +30,7 @@
             type: ONE_TO_ONE_NAT
         metadata: 
           istest: true
+          instance-group: "test group"
         zone: "{{ gce_zone }}"
         project: "{{gce_project}}"
         auth_kind: "{{ gcp_cred_kind }}"
