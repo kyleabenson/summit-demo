@@ -5,7 +5,7 @@
     gcp_project: "kbenson-rh-summit-19"
     gcp_cred_kind: "serviceaccount"
     gce_images_path: "projects/gce-uefi-images/global/images/"
-    gce_distro: "coreos-stable-2079-6-0-v20190617"
+    gce_distro: "centos-7-v20190326"
     gce_zone: "us-east1-b"
     gce_tags: 
       - http-server
@@ -23,7 +23,7 @@
           boot: true
           initialize_params:
             disk_size_gb: "{{ disk_var | default(10)}}"
-            source_image: "{{gce_images_path}}{{gce_distro}}"
+            source_image: projects/coreos-cloud/global/images/coreos-stable-2079-6-0-v20190617
         network_interfaces:
         - access_configs:
           - name: External NAT
